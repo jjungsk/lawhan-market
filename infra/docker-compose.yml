@@ -1,13 +1,25 @@
-# lawhan-market 로컬/배포 Docker Compose 뼈대
+# lawhan-market 로컬/배포 Docker Compose
 #
-# M0 시점: 서비스 정의는 아직 비어있음.
-#   - db(PostgreSQL)는 M1에서, backend는 M1~M6에서, frontend는 M7~M8에서,
-#     nginx 라우팅 규칙은 M9에서 채워질 예정 (docs/milestones.md 참고).
+# M1 시점: 로컬 개발용 db(PostgreSQL)만 정의. backend/frontend/nginx는
+# 각각 M1~M6, M7~M8, M9에서 채워질 예정 (docs/milestones.md 참고).
+# 접속 정보는 backend/src/main/resources/application-local.yml과 일치시킬 것.
 
-services: {}
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: lawhan_market
+      POSTGRES_USER: lawhan_market
+      POSTGRES_PASSWORD: lawhan_market
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
 
 # 예정된 서비스 구성 (docs/architecture-requirements.md §3, §4 참고):
-#   db:       PostgreSQL
-#   backend:  Spring Boot (포트 8080)
-#   frontend: Next.js (포트 3000)
-#   nginx:    리버스 프록시 (/api/* -> backend, 나머지 -> frontend)
+#   backend:  Spring Boot (포트 8080) — M1~M6
+#   frontend: Next.js (포트 3000) — M7~M8
+#   nginx:    리버스 프록시 (/api/* -> backend, 나머지 -> frontend) — M9

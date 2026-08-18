@@ -92,6 +92,8 @@ lawhan-market/
       deploy.yml
   docs/
     architecture-requirements.md   # 본 문서
+    milestones.md
+    cafe24-aws-migration-analysis.md   # 참고용 비용 비교 자료 (M0에서 docs/로 확정)
 ```
 - 모노레포로 진행 — 소규모 2인 이하 운영에서 PR/이슈/버전 태그를 한 곳에서 관리하는 이점이 배포 파이프라인 관리 부담보다 큼.
 - Docker Compose로 backend + frontend + db + nginx를 한 EC2에서 함께 기동.
@@ -179,6 +181,7 @@ soft delete: `listings.deleted_at`으로 처리. 목록/상세 조회 쿼리는 
 | 매물 삭제 | soft delete (`deleted_at`) |
 | 문의 알림 | DB 저장 + AWS SES 이메일 알림 동시 |
 | 매물 일괄 등록(Excel/CSV) | 백로그 (이번 범위 아님) |
+| 저장소 공개 범위 | **Public** (포트폴리오 공개 + 협업자 접근 목적). GHCR 이미지 패키지는 별도 공개 설정 필요하므로 배포 워크플로우에 `docker login ghcr.io` 인증 단계는 유지 |
 
 ## 11. 다음 실행 단계
 
