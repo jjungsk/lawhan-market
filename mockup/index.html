@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<meta name="format-detection" content="telephone=no" />
+<title>Market | 특허법인 로한 (정적 목업 · 스냅샷)</title>
+<link rel="shortcut icon" href="/images/lawhan.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/default.css">
+<link rel="stylesheet" href="/js/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/all.min.css">
+<link rel="stylesheet" href="/css/lawhan_common.css">
+<link rel="stylesheet" href="/css/lawhan_css.css">
+<link rel="stylesheet" href="/css/lawhan_animate.css">
+<link rel="stylesheet" href="/css/market.css">
+<script src="/js/jquery-1.12.4.min.js"></script>
+<script src="/js/jquery-migrate-1.4.1.min.js"></script>
+<script src="/js/jquery.menu.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/wrest.js"></script>
+<script src="/js/placeholders.min.js"></script>
+<script src="/js/lawhan_common.js"></script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/wow.min.js"></script>
+<script>new WOW().init();</script>
+</head>
+<body>
+
+<!--
+  ⚠ 정적 목업 안내
+  이 파일은 lawhan.kr(Cafe24, 그누보드5) 위에서 개발/구현했던 Market(지식마켓) 기능의
+  2026-08-18 시점 UI 스냅샷입니다. PHP/DB 없이 순수 HTML+CSS로 캡처한 것이며,
+  실데이터 바인딩·검색·정렬·페이징 등은 동작하지 않습니다.
+  새 AWS 기반 프로젝트(lawhan-market)의 UI/디자인 기준선(baseline)으로만 사용하세요.
+-->
+
+<div id="wrap">
+
+<header id="lawhan_header">
+    <h1 id="lawhan_logo"><a href="#" title="메인으로 이동"><span class="text_hidden">브릭 법률사무소</span></a></h1>
+
+    <nav id="lawhan_gnb">
+        <ul>
+            <li><a href="#"><span class="up">About</span><span class="down">About</span></a></li>
+            <li><a href="#"><span class="up">Expertise</span><span class="down">Expertise</span></a></li>
+            <li><a href="#"><span class="up">Professional</span><span class="down">Professional</span></a></li>
+            <li><a href="#">
+                <span class="up">Notice</span>
+                <span class="down">Notice</span>
+            </a>
+                <ul>
+                    <li><a href="#">최신소식</a></li>
+                    <li><a href="#">지원사업</a></li>
+                    <li><a href="#">인사이트</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html">
+                <span class="up">Market</span>
+                <span class="down">Market</span>
+            </a></li>
+            <li><a href="#"><span class="up">Contact</span><span class="down">Contact</span></a></li>
+        </ul>
+    </nav>
+
+    <button type="button" title="사이트맵" id="menuToggle"><span></span><span></span><span></span></button>
+
+    <div id="all_gnb">
+        <div>
+            <ul class="menu">
+                <li><a href="#" title="About">About</a></li>
+                <li><a href="#" title="Expertise">Expertise</a></li>
+                <li><a href="#" title="Professional">Professional</a></li>
+                <li><a href="#" title="Notice">Notice</a>
+                    <ul>
+                        <li><a href="#">최신소식</a></li>
+                        <li><a href="#">지원사업</a></li>
+                        <li><a href="#">인사이트</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html" title="Market">Market</a></li>
+                <li><a href="#" title="Contact">Contact</a></li>
+            </ul>
+            <div class="quick_box">
+                <a href="#">
+                    <span class="txt1">저희 특허법인 로한과 <br>어떤 상담을 원하시나요?</span>
+                    <span class="txt2">바로가기</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="sVisu" class="sVisu4">
+    <div class="s-inner">
+        <h2 class="wow fadeInLeft">Market</h2>
+        <p class="wow fadeInRight" data-wow-delay="0.2s">지식마켓</p>
+    </div>
+</div>
+
+<div id="sub_content" class="">
+    <div id="page_cont">
+        <div class="s-inner">
+            <h3 class="wow fadeInRight">Market</h3>
+            <p class="wow fadeInRight mb50" data-wow-delay="0.2s">Market</p>
+
+            <div class="wow fadeInUp">
+
+<div id="market-root">
+
+<div class="mk-crumb">HOME / Market</div>
+
+<div class="mk-section-head">
+    <div class="en">Market</div>
+    <div class="kr">지식마켓 · 특허·상표·디자인 거래</div>
+</div>
+
+<div class="mk-count-row">
+    <div class="mk-count">전체 4건 1페이지</div>
+    <form class="mk-sort-form">
+        <select class="mk-sort" name="sst">
+            <option value="latest" selected>최신순</option>
+            <option value="price_low">가격 낮은순</option>
+            <option value="price_high">가격 높은순</option>
+        </select>
+    </form>
+</div>
+
+<div class="mk-body">
+    <aside class="mk-sidebar">
+        <form class="mk-search">
+            <input type="text" name="stx" placeholder="검색어를 입력하세요">
+            <button type="submit">🔍</button>
+        </form>
+        <div class="mk-cat-title">지식재산권 카테고리</div>
+        <ul class="mk-cat-list">
+            <li class="active"><a href="#">전체보기</a> <span>4</span></li>
+            <li><a href="#">특허/실용신안권</a> <span>2</span></li>
+            <li><a href="#">상표권</a> <span>2</span></li>
+            <li><a href="#">디자인권</a> <span>0</span></li>
+            <li><a href="#">기술 라이센싱</a> <span>0</span></li>
+        </ul>
+    </aside>
+
+    <div class="mk-main">
+        <div class="mk-grid">
+            <a class="mk-card" href="detail.html">
+                <div class="mk-thumb" style="background:#f4efe7;padding:0;overflow:hidden;">
+                    <img src="/data/market/4.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <span class="mk-tag">상표권</span>
+                <h3>test</h3>
+                <div class="mk-price">3,333,333<small>원</small></div>
+                <div class="mk-meta">등록번호 234234</div>
+            </a>
+            <a class="mk-card" href="detail.html">
+                <div class="mk-thumb" style="background:#f4efe7;">유동형 미세먼지 필터 탑재 공기청정기</div>
+                <span class="mk-tag">특허/실용신안권</span>
+                <h3>유동형 미세먼지 필터 탑재 공기청정기</h3>
+                <div class="mk-price">가격 협의</div>
+                <div class="mk-meta">협의중</div>
+            </a>
+            <a class="mk-card" href="detail.html">
+                <div class="mk-thumb" style="background:#f4efe7;">놀고먹는 농부 (제35류 식품 소매업 등)</div>
+                <span class="mk-tag">상표권</span>
+                <h3>놀고먹는 농부 (제35류 식품 소매업 등)</h3>
+                <div class="mk-price">20,000,000<small>원</small></div>
+                <div class="mk-meta">판매중</div>
+            </a>
+            <a class="mk-card" href="detail.html">
+                <div class="mk-thumb" style="background:#f4efe7;">도로 교통 안전 표시 시스템(Road Traffic Safety Indication System)</div>
+                <span class="mk-tag">특허/실용신안권</span>
+                <h3>도로 교통 안전 표시 시스템(Road Traffic Safety Indication System)</h3>
+                <div class="mk-price">300,000,000<small>원</small></div>
+                <div class="mk-meta">등록번호 10-2998384</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="lawhan_footer">
+    <div class="inner">
+        <p class="f_logo"><img src="/images/logo_b.png" alt="특허법인 로한"></p>
+        <div class="info_box">
+            <p class="tit">특허법인 로한</p>
+            <ul>
+                <li>대표 : 이준석 / 부대표 : 서주희</li>
+                <li>서울 서초구 효령로 317 대한건축사협회 3층</li>
+                <li>Tel : <a href="tel:02-2039-1479">02-2039-1479</a></li>
+                <li>사업자등록번호 : 635-88-03586</li>
+                <li>Email : <a href="mailto:lawhan_adm@lawhan.kr">lawhan_adm@lawhan.kr</a></li>
+                <li>개인정보처리관리자 : lawhan_adm@lawhan.kr</li>
+            </ul>
+        </div>
+        <p class="copy">© lawhan. All Rights Reserved.</p>
+    </div>
+</div>
+
+<div id="Quick" class="case2">
+    <div class="inquiry_box">
+        <p class="txt">문의사항이 있으신가요?</p>
+        <ul>
+            <li class="tel"><a href="tel:02-2039-1479">
+                <i class="fa-solid fa-phone"></i>
+                <p>02-2039-1479</p>
+            </a></li>
+            <li><a href="mailto:lawhan_adm@lawhan.kr">
+                <i class="fa-light fa-envelope"></i>
+                <p>이메일</p>
+            </a></li>
+        </ul>
+        <button type="button">
+            <i class="fa-solid fa-comment"></i>
+            <i class="fa-regular fa-xmark"></i>
+        </button>
+    </div>
+    <button type="button" class="go_top">Top</button>
+</div>
+
+</div>
+</body>
+</html>

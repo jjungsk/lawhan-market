@@ -1,0 +1,13 @@
+# lawhan-market 로컬/배포 Docker Compose 뼈대
+#
+# M0 시점: 서비스 정의는 아직 비어있음.
+#   - db(PostgreSQL)는 M1에서, backend는 M1~M6에서, frontend는 M7~M8에서,
+#     nginx 라우팅 규칙은 M9에서 채워질 예정 (docs/milestones.md 참고).
+
+services: {}
+
+# 예정된 서비스 구성 (docs/architecture-requirements.md §3, §4 참고):
+#   db:       PostgreSQL
+#   backend:  Spring Boot (포트 8080)
+#   frontend: Next.js (포트 3000)
+#   nginx:    리버스 프록시 (/api/* -> backend, 나머지 -> frontend)

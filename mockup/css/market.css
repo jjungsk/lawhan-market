@@ -1,0 +1,90 @@
+#market-root, #market-root * { box-sizing: border-box; }
+#market-root {
+  background:#fff; color:#18191B;
+  font-family: Pretendard, "Noto Sans KR", "Nanum Gothic", "Malgun Gothic", Dotum, sans-serif;
+}
+#market-root a { text-decoration:none; color:inherit; }
+#market-root ul { list-style:none; margin:0; padding:0; }
+
+#market-root .mk-crumb{padding:0 0 0;font-size:12px;color:#999;}
+#market-root .mk-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#8a7358;margin:10px 0 14px;cursor:pointer;}
+
+#market-root .mk-section-head{padding:24px 0 0;}
+#market-root .mk-section-head .en{font-family:Lemonada,cursive;font-weight:500;font-size:26px;color:#18191B;}
+#market-root .mk-section-head .kr{font-family:GyeonggiBatang,"Noto Serif KR",serif;font-size:14px;color:#18191B;margin-top:2px;}
+
+#market-root .mk-count-row{display:flex;justify-content:space-between;align-items:center;padding:18px 0 10px;border-bottom:1px solid #18191B;margin:16px 0 0;}
+#market-root .mk-count{font-size:13px;color:#888;}
+#market-root .mk-sort{font-size:13px;color:#555;border:none;background:transparent;border-bottom:1px solid #ccc;padding:4px 18px 4px 4px;}
+
+#market-root .mk-body{display:flex;gap:40px;padding:30px 0 80px;align-items:flex-start;}
+#market-root .mk-sidebar{flex:0 0 250px;position:relative;}
+#market-root .mk-search{display:flex;border-bottom:1px solid #18191B;padding-bottom:8px;margin-bottom:28px;}
+#market-root .mk-search input{border:none;outline:none;flex:1;font-size:13px;font-family:Pretendard,sans-serif;}
+#market-root .mk-search button{border:none;background:none;color:#18191B;cursor:pointer;}
+#market-root .mk-cat-title{font-family:"Noto Serif KR",serif;font-weight:700;font-size:14px;margin-bottom:12px;}
+#market-root .mk-cat-list li{padding:9px 0;font-size:13px;color:#444;border-bottom:1px solid #f0efec;display:flex;justify-content:space-between;}
+#market-root .mk-cat-list li a{flex:1;}
+#market-root .mk-cat-list li.active{color:#8a7358;font-weight:700;}
+#market-root .mk-cat-list li span{color:#aaa;font-size:12px;}
+#market-root .mk-cat-list li.sub{padding-left:14px;font-size:12.5px;color:#777;}
+
+#market-root .mk-main{flex:1;min-width:0;}
+#market-root .mk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#eee;border:1px solid #eee;}
+#market-root .mk-card{background:#fff;padding:22px 20px 24px;position:relative;transition:box-shadow .2s;display:block;}
+#market-root .mk-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.06);z-index:1;}
+#market-root .mk-thumb{height:120px;border-radius:2px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:"Noto Serif KR",serif;font-size:14px;color:#6b5643;margin-bottom:16px;padding:10px;line-height:1.4;}
+#market-root .mk-tag{display:inline-block;font-size:11px;color:#8a7358;border:1px solid #BFAA94;border-radius:10px;padding:2px 9px;margin-bottom:10px;}
+#market-root .mk-card h3{font-size:14.5px;font-weight:700;line-height:1.4;margin:0 0 10px;height:40px;overflow:hidden;color:#18191B;}
+#market-root .mk-price{font-size:15px;font-weight:800;color:#18191B;}
+#market-root .mk-price small{color:#8a7358;font-weight:700;}
+#market-root .mk-meta{font-size:11px;color:#aaa;margin-top:8px;}
+
+#market-root .pg_wrap{margin-top:44px;text-align:center;}
+
+@media (max-width:1100px){
+  #market-root .mk-grid{grid-template-columns:repeat(2,1fr);}
+  #market-root .mk-body{flex-direction:column;}
+  #market-root .mk-sidebar{flex:none;width:100%;}
+}
+
+#market-root .mk-detail-top{display:flex;gap:56px;align-items:flex-start;margin-top:10px;}
+#market-root .mk-detail-img{flex:0 0 420px;height:420px;border-radius:2px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:"Noto Serif KR",serif;font-size:16px;color:#6b5643;padding:20px;line-height:1.5;}
+#market-root .mk-detail-info{flex:1;min-width:0;padding-top:4px;}
+#market-root .mk-detail-tags .mk-tag{margin-right:6px;}
+#market-root .mk-detail-info h2{font-size:26px;font-weight:800;margin:14px 0 18px;line-height:1.4;}
+#market-root .mk-detail-price{font-size:30px;font-weight:800;color:#18191B;margin-bottom:26px;}
+#market-root .mk-detail-price small{color:#8a7358;font-weight:700;font-size:18px;}
+#market-root .mk-info-table{border-top:1px solid #18191B;}
+#market-root .mk-info-row{display:flex;padding:13px 0;border-bottom:1px solid #eee;font-size:13.5px;}
+#market-root .mk-info-row .lb{flex:0 0 130px;color:#8a7358;font-weight:700;}
+#market-root .mk-info-row .val{color:#333;}
+#market-root .mk-detail-content{margin-top:26px;font-size:14px;line-height:1.8;color:#333;}
+
+@media (max-width:900px){
+  #market-root .mk-detail-top{flex-direction:column;}
+  #market-root .mk-detail-img{flex:none;width:100%;height:280px;}
+}
+
+#market-root .mk-form-title{margin-top:64px;}
+#market-root .mk-form-title .en{font-family:Lemonada,cursive;font-weight:500;font-size:22px;}
+#market-root .mk-form-title .kr{font-family:GyeonggiBatang,"Noto Serif KR",serif;font-size:13px;margin-top:2px;}
+#market-root .mk-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:28px;}
+#market-root .mk-field{display:flex;flex-direction:column;}
+#market-root .mk-field.full{grid-column:1 / -1;}
+#market-root .mk-field label{font-size:13px;margin-bottom:10px;color:#18191B;}
+#market-root .mk-field label .req{color:#BFAA94;margin-left:3px;}
+#market-root .mk-field input, #market-root .mk-field select, #market-root .mk-field textarea{border:none;border-bottom:1px solid #ccc;padding:8px 2px;font-size:13px;font-family:Pretendard,sans-serif;outline:none;background:transparent;}
+#market-root .mk-field textarea{resize:none;height:110px;border:1px solid #ccc;padding:10px;}
+#market-root .mk-agree{display:flex;align-items:center;gap:8px;margin:30px 0 20px;font-size:13px;color:#444;}
+#market-root .mk-submit{display:block;width:100%;background:#571518;color:#fff;text-align:center;padding:17px 0;font-size:15px;font-weight:600;border:none;cursor:pointer;font-family:Pretendard,sans-serif;}
+
+#market-root .mk-related{margin-top:70px;}
+#market-root .mk-related .mk-grid{grid-template-columns:repeat(4,1fr);}
+#market-root .mk-related .mk-card h3{font-size:13px;height:34px;}
+#market-root .mk-related .mk-thumb{height:90px;font-size:12px;}
+
+@media (max-width:700px){
+  #market-root .mk-form-grid{grid-template-columns:1fr;}
+  #market-root .mk-related .mk-grid{grid-template-columns:repeat(2,1fr);}
+}
