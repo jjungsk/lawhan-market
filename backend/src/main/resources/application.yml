@@ -11,6 +11,16 @@ spring:
     enabled: true
     locations: classpath:db/migration
 
+# admin 세션 쿠키 (kr.lawhan.market.config.SecurityConfig 참고).
+# secure는 명시하지 않는다 — Spring Boot 기본값이 요청의 HTTPS 여부를 그대로 반영하므로
+# SSL 없는 로컬/초기 EC2 단계와 이후 실제 도메인+SSL 단계 모두에서 별도 프로파일 분기 없이 동작한다.
+server:
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        same-site: strict
+
 # 문의 접수 시 관리자 알림 발송에 사용 (kr.lawhan.market.notification 참고).
 # local/dev 프로파일은 LogNotificationSender가 이 값을 쓰지 않고 로그로만 출력하므로 기본값으로 충분하다.
 # prod는 실제 도메인 이메일로 반드시 덮어쓸 것 (환경변수로 주입).

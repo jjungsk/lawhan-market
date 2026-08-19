@@ -34,7 +34,11 @@ lawhan-market/
   기동 시 Flyway가 `db/migration`의 마이그레이션을 자동 적용하고(스키마 생성 + admin 계정 시딩),
   기본 포트는 `8080`입니다. `application-local.yml` / `application-prod.yml`로 프로파일이 분리되어
   있으며, prod 프로파일은 `DB_URL` / `DB_USERNAME` / `DB_PASSWORD` 환경변수로 접속 정보를 주입받습니다.
-  admin 계정 로그인 API는 M4에서 추가됩니다.
+
+- **Admin 로그인**: `POST /api/admin/login`(email/password, 세션 쿠키 발급) → `GET /api/admin/me`
+  (로그인 상태 확인) → `POST /api/admin/logout`(세션 무효화)로 동작합니다. `/api/admin/**`(로그인 제외)는
+  세션 쿠키 없이 호출 시 401입니다. 로컬 admin 계정 비밀번호는 `backend/.local/admin-initial-password.txt`
+  (V2 마이그레이션 시딩값, git에는 커밋되지 않음)를 참고하세요.
 
 - **문의 알림(이메일) 로컬 동작 방식**: `POST /api/listings/{id}/inquiries`로 문의를 제출하면 (1) DB에
   저장되고 (2) 관리자에게 알림이 발송됩니다. 알림 발송은 `NotificationSender` 인터페이스로 추상화되어

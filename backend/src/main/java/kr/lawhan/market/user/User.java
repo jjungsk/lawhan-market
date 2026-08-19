@@ -10,9 +10,9 @@ import jakarta.persistence.Table;
 import java.time.Instant;
 
 /**
- * Minimal mapping of the users table — only what listings.created_by needs
- * to resolve for M2. Auth-related behavior (login, roles enforcement) is
- * added in M4.
+ * Mapping of the users table. Used both to resolve listings.created_by (M2)
+ * and, via {@link kr.lawhan.market.admin.AdminUserDetailsService}, as the
+ * source of admin login credentials (M4).
  */
 @Entity
 @Table(name = "users")
@@ -43,6 +43,10 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     public String getRole() {
