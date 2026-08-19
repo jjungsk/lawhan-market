@@ -36,6 +36,16 @@ lawhan-market/
   있으며, prod 프로파일은 `DB_URL` / `DB_USERNAME` / `DB_PASSWORD` 환경변수로 접속 정보를 주입받습니다.
   admin 계정 로그인 API는 M4에서 추가됩니다.
 
+- **문의 알림(이메일) 로컬 동작 방식**: `POST /api/listings/{id}/inquiries`로 문의를 제출하면 (1) DB에
+  저장되고 (2) 관리자에게 알림이 발송됩니다. 알림 발송은 `NotificationSender` 인터페이스로 추상화되어
+  있고, local/dev 프로파일에서는 실제 AWS SES를 호출하지 않는 `LogNotificationSender`가 대신 동작하여
+  발송될 내용을 애플리케이션 로그에 `[알림] 관리자에게 문의 접수 이메일 발송 ...`으로 출력합니다.
+  `./gradlew bootRun` 콘솔(또는 `logging.level`을 파일로 리다이렉트한 경우 해당 로그 파일)에서
+  확인할 수 있습니다. 실제 AWS SES 연동(`SesNotificationSender`)은 prod 프로파일에서만 활성화되며,
+  발신/수신 이메일 주소는 `SES_SENDER_EMAIL` / `ADMIN_NOTIFICATION_EMAIL` 환경변수로 주입합니다.
+  DB 저장은 성공했는데 알림 발송만 실패한 경우 사용자 응답은 그대로 `201 Created`이며, 실패 내역은
+  서버 로그에 `ERROR`로만 남습니다(재시도 큐는 이번 범위 아님 — 백로그 참고).
+
 - **Frontend**: Next.js 프로젝트 초기화 및 실행법은 M7에서 채워집니다 (`npm run dev` 예정).
 - **전체 스택(Docker Compose)**: backend/frontend/nginx 서비스 정의는 M9에서 채워집니다.
 - **UI 기준선 확인**: 실제 페이지 구현 전까지는 `mockup/` 폴더의 정적 스냅샷으로 디자인을 참고할 수 있습니다.
@@ -54,6 +64,9 @@ lawhan-market/
 
 ## 백로그 (우선순위 낮음 / 추후 진행)
 
+- **문의 알림 발송 실패 재시도** — 현재는 DB 저장 성공 시 사용자에게 201을 반환하고 이메일 발송
+  실패는 서버 로그(ERROR)로만 남긴다. 발송 실패 시 재시도 큐(예: DB 아웃박스 테이블 + 스케줄러,
+  또는 SQS)로 보완할지는 실제 SES 연동 이후 실패율을 보고 재검토.
 - **README에 스크린샷·배지 추가** — 프론트(M7~M8) 완성 후 실제 화면 캡처 및 빌드/배포 상태 배지(GitHub Actions 등) 추가
 - **매물 일괄 등록 (Excel/CSV 업로드)** — 어드민 기능, `docs/milestones.md` 참고
 - **일반 회원가입/로그인 (member 역할 오픈)**

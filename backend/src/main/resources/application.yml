@@ -10,3 +10,11 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+
+# 문의 접수 시 관리자 알림 발송에 사용 (kr.lawhan.market.notification 참고).
+# local/dev 프로파일은 LogNotificationSender가 이 값을 쓰지 않고 로그로만 출력하므로 기본값으로 충분하다.
+# prod는 실제 도메인 이메일로 반드시 덮어쓸 것 (환경변수로 주입).
+app:
+  notification:
+    sender-email: ${SES_SENDER_EMAIL:no-reply@lawhan.kr}
+    admin-email: ${ADMIN_NOTIFICATION_EMAIL:admin@lawhan.kr}
